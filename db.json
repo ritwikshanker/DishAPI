@@ -1,0 +1,154 @@
+{
+  "dishes": [
+    {
+      "name": "Samosa",
+      "category": "snacks",
+      "price": "10.00",
+      "featured": "true",
+      "description": "Normally served as an entree or appetiser. Potatoes, onions, peas, coriander, and lentils, may be served with a mint or tamarind sauce",
+      "comments": [
+        {
+          "rating": 4,
+          "comment": "Best Snack Ever",
+          "author": "Ritwik",
+          "date": "2018-10-16T17:57:28.556094Z"
+        },
+        {
+          "rating": 2,
+          "comment": "Very Oily and Unhealthy",
+          "author": "Rahul",
+          "date": "2018-09-05T17:57:28.556094Z"
+        },
+        {
+          "rating": 5,
+          "comment": "Eat it, just eat it!",
+          "author": "Shantanu",
+          "date": "2019-02-13T17:57:28.556094Z"
+        },
+        {
+          "rating": 1,
+          "comment": "Didn't like the taste at all",
+          "author": "Ravi",
+          "date": "2018-12-02T17:57:28.556094Z"
+        },
+        {
+          "rating": 4,
+          "comment": "Best Evening Snack",
+          "author": "Ayush",
+          "date": "2018-12-02T17:57:28.556094Z"
+        }
+      ]
+    },
+    {
+      "name": "Rasam",
+      "category": "appetizer",
+      "price": "50.99",
+      "featured": "false",
+      "description": "A spicy and sour soup usually made with tamarind, tomatoes, pepper and other south Indian spices. Usually eaten with rice.",
+      "comments": [
+        {
+          "rating": 4,
+          "comment": "Best Appetizer Ever",
+          "author": "Ritwik",
+          "date": "2018-10-16T17:57:28.556094Z"
+        },
+        {
+          "rating": 5,
+          "comment": "Very Healthy Dish",
+          "author": "Rahul",
+          "date": "2018-09-05T17:57:28.556094Z"
+        },
+        {
+          "rating": 2,
+          "comment": "Don't Eat it!",
+          "author": "Shantanu",
+          "date": "2019-02-13T17:57:28.556094Z"
+        },
+        {
+          "rating": 4,
+          "comment": "Loved the taste!",
+          "author": "Ravi",
+          "date": "2018-12-02T17:57:28.556094Z"
+        },
+        {
+          "rating": 4,
+          "comment": "Best thing to have with Rice",
+          "author": "Ayush",
+          "date": "2018-12-02T17:57:28.556094Z"
+        }
+      ]
+    },
+    {
+      "name": "Butter Chicken",
+      "category": "main",
+      "price": "400.00",
+      "featured": "true",
+      "description": "Butter chicken is a dish, originating in India, of chicken in a mildly spiced tomato sauce",
+      "comments": [
+        {
+          "rating": 5,
+          "comment": "Best Dish Ever",
+          "author": "Ritwik",
+          "date": "2018-10-16T17:57:28.556094Z"
+        },
+        {
+          "rating": 3,
+          "comment": "Very Heavy Dish. Not for people dieting",
+          "author": "Rahul",
+          "date": "2018-09-05T17:57:28.556094Z"
+        },
+        {
+          "rating": 5,
+          "comment": "I am still licking my fingers",
+          "author": "Shantanu",
+          "date": "2019-02-13T17:57:28.556094Z"
+        },
+        {
+          "rating": 4,
+          "comment": "Loved the taste!",
+          "author": "Ravi",
+          "date": "2018-12-02T17:57:28.556094Z"
+        }
+      ]
+    },
+    {
+      "name": "Rosgulla",
+      "category": "dessert",
+      "price": "15.00",
+      "featured": "false",
+      "description": "Dessert. Cottage cheese, flour and sugar syrup. Signature Bengali condiment",
+      "comments": [
+        {
+          "rating": 3,
+          "comment": "Ok Ok",
+          "author": "Ritwik",
+          "date": "2018-10-16T17:57:28.556094Z"
+        },
+        {
+          "rating": 1,
+          "comment": "Too Sweet!",
+          "author": "Rahul",
+          "date": "2018-09-05T17:57:28.556094Z"
+        },
+        {
+          "rating": 5,
+          "comment": "Best thing after a good meal",
+          "author": "Shantanu",
+          "date": "2019-02-13T17:57:28.556094Z"
+        },
+        {
+          "rating": 4,
+          "comment": "Loved the taste!",
+          "author": "Ravi",
+          "date": "2018-12-02T17:57:28.556094Z"
+        },
+        {
+          "rating": 4,
+          "comment": "Good Dessert",
+          "author": "Ayush",
+          "date": "2018-12-02T17:57:28.556094Z"
+        }
+      ]
+    }
+  ]
+}

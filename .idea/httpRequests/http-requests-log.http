@@ -1,0 +1,48 @@
+GET localhost:3000/dishes
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET localhost:3000/dishes
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET localhost:3000/dishes
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET localhost:3000/dishes
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET localhost:3000/dishes
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET localhost:3000/dishes
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET localhost:3000/dishes/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://localhost:8080/resources
+Accept: */*
+Cache-Control: no-cache
+
+###
+
