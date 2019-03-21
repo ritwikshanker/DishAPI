@@ -49,10 +49,10 @@ dishRouter.route('/')
             .catch((err) => next(err));
     });
 
-dishRouter.route('/:dishId')
+dishRouter.route('/:name')
     .get((req, res, next) =>
     {
-        Dishes.findById(req.params.dishId)
+        Dishes.findOne({name: req.params.name})
             .then((dish) =>
             {
                 res.statusCode = 200;
@@ -64,11 +64,11 @@ dishRouter.route('/:dishId')
     .post((req, res, next) =>
     {
         res.statusCode = 403;
-        res.end('POST operation not supported on /dishes/' + req.params.dishId);
+        res.end('POST operation not supported on /dishes/' + req.params.name);
     })
     .put((req, res, next) =>
     {
-        Dishes.findByIdAndUpdate(req.params.dishId, {
+        Dishes.findOneAndUpdate({name: req.params.name}, {
             $set: req.body
         }, {new: true})
             .then((dish) =>
@@ -81,7 +81,7 @@ dishRouter.route('/:dishId')
     })
     .delete((req, res, next) =>
     {
-        Dishes.findByIdAndRemove(req.params.dishId)
+        Dishes.findOneAndDelete({name: req.params.name})
             .then((resp) =>
             {
                 res.statusCode = 200;
@@ -91,10 +91,10 @@ dishRouter.route('/:dishId')
             .catch((err) => next(err));
     });
 
-dishRouter.route('/:dishId/comments')
+dishRouter.route('/:name/comments')
     .get((req, res, next) =>
     {
-        Dishes.findById(req.params.dishId)
+        Dishes.findOne({name: req.params.name})
             .then((dish) =>
             {
                 if (dish != null)
@@ -104,7 +104,7 @@ dishRouter.route('/:dishId/comments')
                     res.json(dish.comments);
                 } else
                 {
-                    err = new Error('Dish ' + req.params.dishId + ' not found');
+                    err = new Error('Dish ' + req.params.name + ' not found');
                     err.status = 404;
                     return next(err);
                 }
@@ -113,7 +113,7 @@ dishRouter.route('/:dishId/comments')
     })
     .post((req, res, next) =>
     {
-        Dishes.findById(req.params.dishId)
+        Dishes.findOne({name: req.params.name})
             .then((dish) =>
             {
                 if (dish != null)
@@ -128,7 +128,7 @@ dishRouter.route('/:dishId/comments')
                         }, (err) => next(err));
                 } else
                 {
-                    err = new Error('Dish ' + req.params.dishId + ' not found');
+                    err = new Error('Dish ' + req.params.name + ' not found');
                     err.status = 404;
                     return next(err);
                 }
@@ -139,11 +139,11 @@ dishRouter.route('/:dishId/comments')
     {
         res.statusCode = 403;
         res.end('PUT operation not supported on /dishes/'
-            + req.params.dishId + '/comments');
+            + req.params.name + '/comments');
     })
     .delete((req, res, next) =>
     {
-        Dishes.findById(req.params.dishId)
+        Dishes.findOne({name: req.params.name})
             .then((dish) =>
             {
                 if (dish != null)
@@ -161,7 +161,7 @@ dishRouter.route('/:dishId/comments')
                         }, (err) => next(err));
                 } else
                 {
-                    err = new Error('Dish ' + req.params.dishId + ' not found');
+                    err = new Error('Dish ' + req.params.name + ' not found');
                     err.status = 404;
                     return next(err);
                 }
@@ -169,25 +169,25 @@ dishRouter.route('/:dishId/comments')
             .catch((err) => next(err));
     });
 
-dishRouter.route('/:dishId/comments/:commentId')
+dishRouter.route('/:name/comments/:author')
     .get((req, res, next) =>
     {
-        Dishes.findById(req.params.dishId)
+        Dishes.findOne({name: req.params.name})
             .then((dish) =>
             {
-                if (dish != null && dish.comments.id(req.params.commentId) != null)
+                if (dish != null && dish.comments.id(req.params.author) != null)
                 {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
-                    res.json(dish.comments.id(req.params.commentId));
+                    res.json(dish.comments.id(req.params.author));
                 } else if (dish == null)
                 {
-                    err = new Error('Dish ' + req.params.dishId + ' not found');
+                    err = new Error('Dish ' + req.params.name + ' not found');
                     err.status = 404;
                     return next(err);
                 } else
                 {
-                    err = new Error('Comment ' + req.params.commentId + ' not found');
+                    err = new Error('Comment ' + req.params.author + ' not found');
                     err.status = 404;
                     return next(err);
                 }
@@ -197,23 +197,23 @@ dishRouter.route('/:dishId/comments/:commentId')
     .post((req, res, next) =>
     {
         res.statusCode = 403;
-        res.end('POST operation not supported on /dishes/' + req.params.dishId
-            + '/comments/' + req.params.commentId);
+        res.end('POST operation not supported on /dishes/' + req.params.name
+            + '/comments/' + req.params.author);
     })
     .put((req, res, next) =>
     {
-        Dishes.findById(req.params.dishId)
+        Dishes.findOne({author: req.params.author})
             .then((dish) =>
             {
-                if (dish != null && dish.comments.id(req.params.commentId) != null)
+                if (dish != null && dish.comments.id(req.params.author) != null)
                 {
                     if (req.body.rating)
                     {
-                        dish.comments.id(req.params.commentId).rating = req.body.rating;
+                        dish.comments.id(req.params.author).rating = req.body.rating;
                     }
                     if (req.body.comment)
                     {
-                        dish.comments.id(req.params.commentId).comment = req.body.comment;
+                        dish.comments.id(req.params.author).comment = req.body.comment;
                     }
                     dish.save()
                         .then((dish) =>
@@ -224,12 +224,12 @@ dishRouter.route('/:dishId/comments/:commentId')
                         }, (err) => next(err));
                 } else if (dish == null)
                 {
-                    err = new Error('Dish ' + req.params.dishId + ' not found');
+                    err = new Error('Dish ' + req.params.name + ' not found');
                     err.status = 404;
                     return next(err);
                 } else
                 {
-                    err = new Error('Comment ' + req.params.commentId + ' not found');
+                    err = new Error('Comment ' + req.params.author + ' not found');
                     err.status = 404;
                     return next(err);
                 }
@@ -238,12 +238,12 @@ dishRouter.route('/:dishId/comments/:commentId')
     })
     .delete((req, res, next) =>
     {
-        Dishes.findById(req.params.dishId)
+        Dishes.findOne({author: req.params.author})
             .then((dish) =>
             {
-                if (dish != null && dish.comments.id(req.params.commentId) != null)
+                if (dish != null && dish.comments.id(req.params.author) != null)
                 {
-                    dish.comments.id(req.params.commentId).remove();
+                    dish.comments.id(req.params.author).remove();
                     dish.save()
                         .then((dish) =>
                         {
@@ -253,12 +253,12 @@ dishRouter.route('/:dishId/comments/:commentId')
                         }, (err) => next(err));
                 } else if (dish == null)
                 {
-                    err = new Error('Dish ' + req.params.dishId + ' not found');
+                    err = new Error('Dish ' + req.params.name + ' not found');
                     err.status = 404;
                     return next(err);
                 } else
                 {
-                    err = new Error('Comment ' + req.params.commentId + ' not found');
+                    err = new Error('Comment ' + req.params.author + ' not found');
                     err.status = 404;
                     return next(err);
                 }
